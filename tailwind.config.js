@@ -2,7 +2,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ['./dist/index.html','./dist/app.js', "./src/**/*.{html,js}", './pages/**/*.{html,js}', './components/**/*.{html,js}'],
+  content: ['./dist/**/*.html','./dist/**/*.js', "./src/**/*.{html,js}"],
   theme: {
     container: {
       center: true
