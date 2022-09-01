@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Example</title>
+    <link rel="stylesheet" href="/dist/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-black">
+    <div id="modal" class="absolute top-0 left-0 w-screen h-screen bg-gray-300 text-center hidden justify-center items-center">
+        <div class=" bg-black w-1/2 mx-auto p-10 rounded">
+            <p class="text-white my-5">Hello, welcome to the Shownet App. Please Enter your name to login.</p>
+            <form action="#" id="loginForm">
+                <input type="text" class="w-2/3 px-2 py-1 rounded outline-none">
+            </form>
+            <button id="loginButton" class="bg-purple text-white px-4 py-2 my-5 rounded hover:bg-darkpurple">Login</button>
+            
+        </div>
+    </div>
+    <header class="flex items-center flex-wrap p-5">
+        <div class="flex justify-start items-center flex-shrink-0 w-full my-4 md:w-1/5 md:my-0">
+            <h3 class="text-purple font-bold text-3xl">SHOWNET</h3>
+        </div>
+        
+        <form id="searchForm" action="#" class="flex justify-center items-center w-full my-4 md:w-2/5 md:my-0">
+            <input 
+            name="search" type="search" placeholder="Search for a TV show.." autofocus required 
+            class="bg-transparent border border-purple border-2 rounded-full px-3 py-1 w-3/4 text-white outline-none">
+            <button class="font-bold bg-purple hover:bg-darkpurple text-white border border-purple border-2 px-2 py-1 rounded-full w-1/4 ml-2">
+                Search
+            </button>
+        </form>
+
+        <div class="flex justify-start md:justify-end items-center w-full my-3 md:w-2/5 md:my-0">
+            <p id="welcomeText" class="font-semibold text-white text-lg">Welcome, User</p>
+            <img src="/dist/images/profile-image.jpg" alt="profile Image" class="rounded-full border border-yellow-300 w-10 ml-2">
+            <button id="login" class="font-bold bg-transparent text-purple px-2 py-1 ml-5 rounded border border-purple hover:bg-purple hover:text-white">Sign In</button>
+            <button id="logout" class="hidden font-bold bg-transparent text-purple px-2 py-1 ml-5 rounded border border-purple hover:bg-purple hover:text-white">Logout</button>
+        </div>
+    </header>
+
+    <nav class="bg-gray-500 w-full p-3 flex items-center">
+        <a href="#" id="romance" class="text-white bg-transparent hover:text-yellow-300 mr-4 md:mr-6 ml-2">Romance</a>
+        <a href="#" id="popular" class="text-white bg-transparent hover:text-yellow-300 mx-4 md:mx-6">Popular</a>
+        <a href="#" id="action" class="text-white bg-transparent hover:text-yellow-300 mx-4 md:mx-6">Action</a>
+        <a href="#" id="comedy" class="text-white bg-transparent hover:text-yellow-300 mx-4 md:mx-6">Comedy</a>
+        <a href="#" id="horror" class="text-white bg-transparent hover:text-yellow-300 mx-4 md:mx-6">Horror</a>
+    </nav>
+
+    <div class="container w-5/6 mx-auto my-5">
+        <div class="py-3 px-4  border-l-purple border-l-4 text-white">
+            Shownet is a simple web application that provides a platform where users
+            can search for and get up to date information on all available TV shows and series. 
+            It was built with <a href="https://tailwindcss.com" target="blank" class="text-bubble-gum">TailwindCSS</a>  and 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="blank" class="text-bubble-gum">Vanilla JS</a> using the TV Maze API.
+            Go through titles in the links above or browse other titles. 
+        </div>
+
+        <div id="alert" class="hidden text-center text-red bg-bubble-gum border border-red w-3/6 py-3 px-4 my-5 mx-auto rounded font-bold">
+            An error occured!
+        </div>
+
+        <div id="content" class="md:flex flex-wrap justify-center items-center my-10">
+
+            <div class="w-full md:w-2/5 my-3 md:mx-2 p-4 flex items-center bg-purple rounded">
+                <div class="w-1/3 mr-4">
+                    <img src="https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg" alt="TV Show Poster Image" class="rounded">
+                </div>
+                <div class="w-2/3 font-Poppins border-dotted border-l-midnight border-l-4 pl-2">
+                    <h2 id="title" class="text-white uppercase mb-2">Girls</h2>
+                    <p id="genre" class="text-green text-sm mb-2"> Drama, Romance</p>
+                    <p id="summary" class="text-gray-300 text-xs mb-2 text-clip">
+                        &#128214;This Emmy winning series is a comic look at the assorted 
+                        humiliations and rare triumphs of a group of girls in their 20s.
+                    </p>
+                    <p id="ratings" class="text-yellow-300 text-sm mb-1">Avg. Ratings: 6.7</p>
+                    <p id="language" class="text-tahiti text-sm mb-1">Language(s): English</p>
+                    <p id="status" class="text-red text-sm mb-1">Status: Ended</p>
+                    <a href="http://www.hbo.com/girls" target="_blank" class="text-midnight text-xs hover:underline">Visit Official Website</a>
+                </div>
+            </div>
+
+            <div class="w-full md:w-2/5 my-3 md:mx-2 p-4 flex items-center bg-purple rounded">
+                <div class="w-1/3 mr-4">
+                    <img src="https://static.tvmaze.com/uploads/images/medium_portrait/217/544852.jpg" alt="TV Show Poster Image" class="rounded">
+                </div>
+                <div class="w-2/3 font-Poppins border-dotted border-l-midnight border-l-4 pl-2">
+                    <h2 id="title" class="text-white uppercase mb-2">Empire</h2>
+                    <p id="genre" class="text-green text-sm mb-2"> Drama, Music</p>
+                    <p id="summary" class="text-gray-300 text-xs mb-2 text-clip">
+                        &#128214;Empire is a powerful drama about a family dynasty set within glamorous 
+                        and sometimes dangerous world of hip-hop.  
+                    </p>
+                    <p id="ratings" class="text-yellow-300 text-sm mb-1">Avg. Rating - 6.7</p>
+                    <p id="language" class="text-tahiti text-sm mb-1">Language(s): English</p>
+                    <p id="status" class="text-red text-sm mb-1">Status: Ended</p>
+                    <a href="http://www.fox.com/empire" target="_blank" id="website" class="text-midnight text-xs hover:underline">Visit Official Website</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/dist/app.js"></script>
+</body>
+</html>
