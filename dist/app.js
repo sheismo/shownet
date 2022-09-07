@@ -222,7 +222,7 @@ const createMovie = (results) => {
             website.classList.add(...websiteClasses)
             website.href = result.show.officialSite
             website.target = '_blank'
-            website.innerHTML = 'Visit Official Website'
+            website.innerHTML = 'Learn More'
 
             //Add the elements to the movie info div
             childDiv2.append(title, genre, summary, ratings, language, status, website)
